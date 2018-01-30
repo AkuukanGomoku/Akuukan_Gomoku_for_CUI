@@ -33,7 +33,7 @@ class Player
                 @record += [[opponent,outcome]]
             end
             newr = @record.to_s
-            f = File.open("akuukan_memory.rb","r")
+            f = File.open("memory.rb","r")
             text = f.read
             f.close
             if n < 0
@@ -43,7 +43,7 @@ class Player
             end
         else 
             @record += [[opponent,outcome]]
-            f = File.open("akuukan_memory.rb", "r")
+            f = File.open("memory.rb", "r")
             line = ""
             text = ""
             while true
@@ -63,7 +63,7 @@ class Player
             end
             f.close
         end
-        f = File.open("akuukan_memory.rb","w")
+        f = File.open("memory.rb","w")
         f.write text
         f.close
     end
@@ -105,7 +105,7 @@ end
 
 def addPlayer(name)
     n = $players.length
-    f = File.open("akuukan_memory.rb", "r")
+    f = File.open("memory.rb", "r")
     line = ""
     text = ""
     while true
@@ -120,10 +120,10 @@ def addPlayer(name)
         end
     end
     f.close
-    f = File.open("akuukan_memory.rb", "w")
+    f = File.open("memory.rb", "w")
     f.write text
     f.close
-    load "akuukan_memory.rb"
+    load "memory.rb"
     puts "追加が完了しました。🤗"
 end
 
@@ -157,7 +157,7 @@ class Version < Player
         @record = []
         @verName = "#{v1}.#{v2}"
         @verVariable = "#{v1},#{v2}"
-        @fileName = "akuukan_value" + @verName + ".rb"
+        @fileName = "values/value" + @verName + ".rb"
         @funcName = "value_#{v1}_#{v2}"
         @playerName = "ver" + @verName
         @playerNum = -$versions.length
@@ -183,7 +183,7 @@ def addVersion(v1,v2)
         alphabet = $versions[-1]
         name = alphabet.next #versionsの最後の要素の次のアルファベット
     end
-    f = File.open("akuukan_memory.rb", "r")
+    f = File.open("memory.rb", "r")
     line = ""
     text = ""
     while true
@@ -198,10 +198,10 @@ def addVersion(v1,v2)
         end
     end
     f.close
-    f = File.open("akuukan_memory.rb", "w")
+    f = File.open("memory.rb", "w")
     f.write text
     f.close
-    load "akuukan_memory.rb"
+    load "memory.rb"
     puts "追加が完了しました。🤗"
 end
 
@@ -224,7 +224,7 @@ end
 
 def deleteLastVersion
     name = $versions[-1]
-    f = File.open("akuukan_memory.rb","r")
+    f = File.open("memory.rb","r")
     text = ""
     line = ""
     while true
@@ -241,18 +241,18 @@ def deleteLastVersion
         end
     end
     f.close
-    f = File.open("akuukan_memory.rb","w")
+    f = File.open("memory.rb","w")
     f.write(text)
     f.close
-    f = File.open("akuukan_memory.rb","r")
+    f = File.open("memory.rb","r")
     text = ""
     line = ""
-    load "akuukan_memory.rb"
+    load "memory.rb"
     puts "削除が完了しました。😎"
 end
 
 def deleteAllVersion
-    f = File.open("akuukan_memory.rb", "r")
+    f = File.open("memory.rb", "r")
     line = ""
     text = ""
     while true
@@ -270,16 +270,16 @@ def deleteAllVersion
         end
     end
     f.close
-    f = File.open("akuukan_memory.rb", "w")
+    f = File.open("memory.rb", "w")
     f.write text
     f.close
-    load "akuukan_memory.rb"
+    load "memory.rb"
     puts "削除が完了しました。😎"
 end
 
 def reset
-    f = File.open("akuukan_memory.rb", "w")
-    f.write("require \"./akuukan_player.rb\"\n$players = [\"ゲスト\"]\n$versions = []\n$reqcapture = 10 #なっんことったら上がりにするか\n\n#####player倉庫\n#####playerここまで\n\n#####version倉庫\n#####versionここまで\n\n#####record倉庫\n#####recordここまで")
+    f = File.open("memory.rb", "w")
+    f.write("require \"./player.rb\"\n$players = [\"ゲスト\"]\n$versions = []\n$reqcapture = 10 #なっんことったら上がりにするか\n\n#####player倉庫\n#####playerここまで\n\n#####version倉庫\n#####versionここまで\n\n#####record倉庫\n#####recordここまで")
     f.close
-    load "akuukan_memory.rb"
+    load "memory.rb"
 end

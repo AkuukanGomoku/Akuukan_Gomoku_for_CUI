@@ -1,4 +1,4 @@
-require "./akuukan_memory.rb"
+require "./memory.rb"
 board = Array.new(25).map{Array.new(25,2)} #空いてるますが0、黒マス白マスがそれぞれ1,-1、盤面の外は2
 for i in 0..18
     for j in 0..18
@@ -497,7 +497,7 @@ while true
                                 text = f.read
                                 f.close
                                 text.gsub!("$reqcapture = #{$reqcapture}" ,"$reqcapture = #{n}")
-                                f = File.open("akuukan_memory.rb","w")
+                                f = File.open("memory.rb","w")
                                 f.write(text)
                                 f.close
                                 $reqcapture = n

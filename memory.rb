@@ -1,4 +1,4 @@
-require "./akuukan_player.rb"
+require "./player.rb"
 $players = ["ゲスト"]
 $versions = []
 $reqcapture = 10 #なっんことったら上がりにするか
